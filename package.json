@@ -1,0 +1,19 @@
+{
+  "name": "midi-js-utils",
+  "version": "0.0.0",
+  "description": "",
+  "main": "./src/midi-js-utils.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Jason A. Storey",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "jbinary": "^2.1.2",
+    "mocha": "^1.20.1",
+    "proxyquire": "^1.0.1",
+    "sinon": "^1.10.3",
+    "sinon-chai": "^2.5.0"
+  }
+}
