@@ -7,7 +7,15 @@ describe('Load remote midi file test', function() {
 				type: 'MThd',
 				length: 6,
 				format: 0,
-				ntracks: 1
+				ntracks: 1,
+				division: {
+					format: 'tpq',
+					tpq: 120,
+					mtc: {
+						smpte: 0,
+						tpf: 120
+					}
+				}
 			},
 			header = midi.getHeader();
 			console.log(header);
