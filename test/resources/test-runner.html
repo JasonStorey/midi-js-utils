@@ -14,6 +14,14 @@
             mocha.ui('bdd'); 
             mocha.reporter('html');
             var expect = chai.expect;
+            var check = function check(done, f) {
+                try {
+                    f()
+                    done()
+                } catch( e ) {
+                    done( e )
+                }
+            };
         </script>
         <script src="./test-bundle.js"></script>
         <script>

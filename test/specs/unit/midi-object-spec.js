@@ -10,7 +10,9 @@ describe('midi-object', function() {
 		mockFile = {
 			header: {
 				chunkId: 'MThd',
-				chunkSize: 6
+				chunkSize: 6,
+				format: 0,
+				numberOfTracks: 100
 			},
 		};
 		mockBinary.read.withArgs('File').returns(mockFile);
@@ -30,17 +32,10 @@ describe('midi-object', function() {
 
 	describe('getHeader', function() {
 		it('returns header object', function() {
-			var expectedHeader = {
-					chunkId: 'MThd',
-					chunkSize: 6
-				},
-				midiObject,
-				headerObject;
+			var midiObject = new MidiObject(mockBinary),
+				headerObject = midiObject.getHeader();
 
-			midiObject = new MidiObject(mockBinary);
-			headerObject = midiObject.getHeader();
-
-			expect(headerObject).to.deep.equal(expectedHeader);
+			expect(headerObject).to.deep.equal(mockFile.header);
 		});
 	});
 });
