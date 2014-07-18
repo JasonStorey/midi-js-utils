@@ -1,3 +1,10 @@
 module.exports = {
-  	headerChunkId: ['string', 4, 'binary']
+	'jBinary.all': 'File',
+	'jBinary.littleEndian': false,
+  	File: {
+  		header: {
+  			chunkId: ['string', 4, 'binary'],
+  			chunkSize: 'uint32'
+  		}
+  	}
 };

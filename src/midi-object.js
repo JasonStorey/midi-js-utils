@@ -1,13 +1,10 @@
 var MidiObject = function MidiObject(binary) {
 	this.binary = binary;
+	this.File = binary.read('File');
 };
 
 MidiObject.prototype.getHeader = function getHeader() {
-	var header = {
-		chunkId: this.binary.read('headerChunkId')
-	};
-	return header;
+	return this.File.header;
 };
-
 
 module.exports = MidiObject;
