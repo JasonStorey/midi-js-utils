@@ -4,7 +4,7 @@ describe('Load remote midi file test', function() {
 	it('loads midi file and parses header chunk', function(done) {
 		midiJsUtils.load('http://localhost:8000/test/resources/zelda.mid', function(err, midi) {
 			var expectedHeader = {
-				chunkType: 'MThd',
+				type: 'MThd',
 				length: 6,
 				format: 0,
 				ntracks: 1

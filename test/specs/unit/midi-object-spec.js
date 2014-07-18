@@ -9,7 +9,7 @@ describe('midi-object', function() {
 		};
 		mockFile = {
 			header: {
-				chunkType: 'MThd',
+				type: 'MThd',
 				length: 6,
 				format: 0,
 				ntracks: 100
