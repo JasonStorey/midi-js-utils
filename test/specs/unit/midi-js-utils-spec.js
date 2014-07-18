@@ -14,28 +14,31 @@ describe('midi-js-utils', function() {
 	});
 	
 	describe('load', function() {
-		it('calls jBinary.load with url and callback', function() {
+		it('calls jBinary.load with url, typeset, and callback', function() {
 			var url = 'http://test.mid',
+				typeSet = {
+  					header: ['array', 'uint8', 4]
+				},
 				callback = sinon.stub();
 
 			midiJsUtils.load(url, callback);
 			
 			expect(mockJBinary.load).to.have.been.calledOnce;
-			expect(mockJBinary.load).to.have.been.calledWith(url, sinon.match.func);
+			expect(mockJBinary.load).to.have.been.calledWith(url, typeSet, sinon.match.func);
 		});
 
-		it('calls callback with error and data', function() {
+		it('calls callback with error and binary', function() {
 			var url = 'http://test.mid',
 				error = null,
-				data = 'some midi data',
+				binary = 'some midi data',
 				callback = sinon.stub();
 
-			mockJBinary.load.callsArgWith(1, error, data);
+			mockJBinary.load.callsArgWith(2, error, binary);
 			
 			midiJsUtils.load(url, callback);
 			
 			expect(callback).to.have.been.calledOnce;
-			expect(callback).to.have.been.calledWith(error, data);
+			expect(callback).to.have.been.calledWith(error, binary);
 		});
 	});
 });
