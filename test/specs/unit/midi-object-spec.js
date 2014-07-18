@@ -9,10 +9,10 @@ describe('midi-object', function() {
 		};
 		mockFile = {
 			header: {
-				chunkId: 'MThd',
-				chunkSize: 6,
+				chunkType: 'MThd',
+				length: 6,
 				format: 0,
-				numberOfTracks: 100
+				ntracks: 100
 			},
 		};
 		mockBinary.read.withArgs('File').returns(mockFile);
