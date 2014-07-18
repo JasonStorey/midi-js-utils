@@ -1,12 +1,9 @@
-var jBinary = require('jBinary');
+var jBinary = require('jBinary'),
+	midiTypeset = require('./midi-typeset.js');
 
 function midiJsUtils() {
-	var typeSet = {
-  		header: ['array', 'uint8', 4]
-	};
-
 	function load(url, cb) {
-		jBinary.load(url, typeSet, function(err, binary) {
+		jBinary.load(url, midiTypeset, function(err, binary) {
 			cb(err, binary);
 		});
 	}

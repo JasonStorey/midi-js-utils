@@ -8,23 +8,25 @@ describe('midi-js-utils', function() {
 			load: sinon.stub()
 		};
 
+		mockMidiTypeset = {
+			fake: ['things']
+		};
+
 		midiJsUtils = proxyquire.noCallThru().load('../src/midi-js-utils.js', {
-            'jBinary': mockJBinary
+            'jBinary': mockJBinary,
+            './midi-typeset.js': mockMidiTypeset
         });
 	});
 	
 	describe('load', function() {
 		it('calls jBinary.load with url, typeset, and callback', function() {
 			var url = 'http://test.mid',
-				typeSet = {
-  					header: ['array', 'uint8', 4]
-				},
 				callback = sinon.stub();
 
 			midiJsUtils.load(url, callback);
 			
 			expect(mockJBinary.load).to.have.been.calledOnce;
-			expect(mockJBinary.load).to.have.been.calledWith(url, typeSet, sinon.match.func);
+			expect(mockJBinary.load).to.have.been.calledWith(url, mockMidiTypeset, sinon.match.func);
 		});
 
 		it('calls callback with error and binary', function() {
@@ -37,6 +39,7 @@ describe('midi-js-utils', function() {
 			
 			midiJsUtils.load(url, callback);
 			
+			expect(mockJBinary.load).to.have.been.calledOnce;
 			expect(callback).to.have.been.calledOnce;
 			expect(callback).to.have.been.calledWith(error, binary);
 		});

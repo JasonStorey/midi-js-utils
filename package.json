@@ -7,7 +7,7 @@
     "test": "mocha",
     "build": "./bin/build.sh",
     "build-test-assets": "./bin/build-test-assets.sh",
-    "phantom-test": "mocha-phantomjs -R dot ./test/resources/test-runner.html"
+    "phantom-test": "mocha-phantomjs http:localhost:8000/test/resources/test-runner.html"
   },
   "author": "Jason A. Storey",
   "license": "ISC",
