@@ -1,7 +1,9 @@
 describe('midi-js-utils', function() {
 
 	var midiJsUtils,
-		mockJBinary;
+		mockJBinary,
+		mockMidiObject,
+		mockMidiObjectConstructor;
 
 	beforeEach(function() {
 		mockJBinary = {
@@ -12,9 +14,13 @@ describe('midi-js-utils', function() {
 			fake: ['things']
 		};
 
+		mockMidiObject = {};
+		mockMidiObjectConstructor = sinon.stub().returns(mockMidiObject);
+
 		midiJsUtils = proxyquire.noCallThru().load('../src/midi-js-utils.js', {
             'jBinary': mockJBinary,
-            './midi-typeset.js': mockMidiTypeset
+            './midi-typeset.js': mockMidiTypeset,
+            './midi-object.js': mockMidiObjectConstructor
         });
 	});
 	
@@ -29,19 +35,21 @@ describe('midi-js-utils', function() {
 			expect(mockJBinary.load).to.have.been.calledWith(url, mockMidiTypeset, sinon.match.func);
 		});
 
-		it('calls callback with error and binary', function() {
+		it('calls callback with error and midi object', function() {
 			var url = 'http://test.mid',
 				error = null,
-				binary = 'some midi data',
+				binaryObject = 'some midi data',
 				callback = sinon.stub();
 
-			mockJBinary.load.callsArgWith(2, error, binary);
+			mockJBinary.load.callsArgWith(2, error, binaryObject);
 			
 			midiJsUtils.load(url, callback);
-			
+
 			expect(mockJBinary.load).to.have.been.calledOnce;
+			expect(mockMidiObjectConstructor).to.have.been.calledOnce;
+			expect(mockMidiObjectConstructor).to.have.been.calledWith(binaryObject);
 			expect(callback).to.have.been.calledOnce;
-			expect(callback).to.have.been.calledWith(error, binary);
+			expect(callback).to.have.been.calledWith(error, mockMidiObject);
 		});
 	});
 });
