@@ -18,6 +18,7 @@ module.exports = {
   					baseType: 'uint16',
   					read: function(context) {
   						this.binary.seek(this.binary.tell() - 1);
+              // TODO: Investigate jBinary's use of Request. Response type is string, not array buffer.
   						return this.baseRead() & 0x7fff;
   					}
   				}),
