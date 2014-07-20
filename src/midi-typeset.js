@@ -3,6 +3,7 @@ var jBinary = require('jBinary');
 module.exports = {
 	'jBinary.all': 'File',
 	'jBinary.littleEndian': false,
+  'jBinary.mimeType': 'audio/midi',
   	File: {
   		header: {
   			type: ['string', 4, 'binary'],
@@ -18,7 +19,7 @@ module.exports = {
   					baseType: 'uint16',
   					read: function(context) {
   						this.binary.seek(this.binary.tell() - 1);
-              // TODO: Investigate jBinary's use of Request. Response type is string, not array buffer.
+              // TODO: Okay, worked it out. jBinary is node version... need common js browser version.
   						return this.baseRead() & 0x7fff;
   					}
   				}),
