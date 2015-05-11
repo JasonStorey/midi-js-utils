@@ -1,18 +1,10 @@
 describe('Load remote midi file test', function() {
-	var midiJsUtils = require('../../index.js');
-
-    function tryAndCatch(func, done) {
-        try {
-            func();
-            done();
-        } catch (e) {
-            done(e);
-        }
-    }
+	var midiJsUtils = require('../../index.js'),
+        utils = require('./test-utils');
 
     it('calls callback with error when load fails', function(done) {
         midiJsUtils.load('./does/not/exist', function(err, midi) {
-            tryAndCatch(function(){
+            utils.tryAndCatch(function(){
                 expect(err).to.be.defined;
                 expect(midi).to.be.null;
             }, done);
@@ -37,7 +29,7 @@ describe('Load remote midi file test', function() {
 			},
 			header = midi.getHeader();
 
-            tryAndCatch(function(){
+            utils.tryAndCatch(function(){
                 expect(err).to.be.null;
                 expect(header).to.deep.equal(expectedHeader);
             }, done);
