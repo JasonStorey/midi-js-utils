@@ -2,3 +2,4 @@ node_modules
 dist
 test/resources/lib
 test/resources/test-bundle.js
+.idea
