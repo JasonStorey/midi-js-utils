@@ -1,4 +1,4 @@
-describe('midi-js-utils', function() {
+describe('midi-js-utils spec', function() {
 
 	var midiJsUtils,
 		mockJBinary,

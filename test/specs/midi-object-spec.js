@@ -1,4 +1,4 @@
-describe('midi-object', function() {
+describe('midi-object spec', function() {
 	var MidiObject = require('../../lib/midi-object.js'),
 		mockBinary,
 		mockFile;
