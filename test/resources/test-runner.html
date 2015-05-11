@@ -3,27 +3,19 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Tests </title>
-        <link rel="stylesheet" href="./lib/mocha.css" />
+        <title>MIDI JS UTILS Tests</title>
+        <link rel="stylesheet" href="../../node_modules/mocha/mocha.css" />
     </head>
     <body>
         <div id="mocha"></div>
-        <script src="./lib/mocha.js"></script>
-        <script src="./lib/chai.js"></script>
+        <script src="../../node_modules/chai/chai.js"></script>
+        <script src="../../node_modules/mocha/mocha.js"></script>
         <script>
             mocha.ui('bdd'); 
             mocha.reporter('html');
             var expect = chai.expect;
-            var check = function check(done, f) {
-                try {
-                    f()
-                    done()
-                } catch( e ) {
-                    done( e )
-                }
-            };
         </script>
-        <script src="./test-bundle.js"></script>
+        <script src="../../dist/test-bundle.js"></script>
         <script>
             if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
             else { mocha.run(); }

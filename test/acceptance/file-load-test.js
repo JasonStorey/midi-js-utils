@@ -1,9 +1,8 @@
 describe('Load remote midi file test', function() {
-	var midiJsUtils = require('../../..');
+	var midiJsUtils = require('../../index.js');
 
 	it('loads midi file and parses header chunk', function(done) {
 		midiJsUtils.load('http://localhost:8000/test/resources/zelda.mid', function(err, midi) {
-		// midiJsUtils.load('http://localhost:8000/test/resources/test.mid', function(err, midi) {
 			var expectedHeader = {
 				type: 'MThd',
 				length: 6,
@@ -19,11 +18,9 @@ describe('Load remote midi file test', function() {
 				}
 			},
 			header = midi.getHeader();
-			console.log(header);
-			check(done, function() {
-				expect(err).to.be.null;
-				expect(header).to.deep.equal(expectedHeader);
-			});
+            expect(err).to.be.null;
+            expect(header).to.deep.equal(expectedHeader);
+            done();
 		});
 	});
 });
