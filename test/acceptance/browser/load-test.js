@@ -1,5 +1,5 @@
 describe('Load remote midi file test', function() {
-	var midiJsUtils = require('../../../src/midi-js-utils.js');
+	var midiJsUtils = require('../../../lib/midi-js-utils.js');
 
 	it('loads midi file and parses header chunk', function(done) {
 		midiJsUtils.load('http://localhost:8000/test/resources/zelda.mid', function(err, midi) {

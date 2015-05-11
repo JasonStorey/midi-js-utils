@@ -1,8 +1,8 @@
 {
   "name": "midi-js-utils",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "./src/midi-js-utils.js",
+  "main": "./index.js",
   "scripts": {
     "test": "mocha",
     "build": "./bin/build.sh",

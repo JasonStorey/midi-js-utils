@@ -17,7 +17,7 @@ describe('midi-js-utils', function() {
 		mockMidiObject = {};
 		mockMidiObjectConstructor = sinon.stub().returns(mockMidiObject);
 
-		midiJsUtils = proxyquire.noCallThru().load('../src/midi-js-utils.js', {
+		midiJsUtils = proxyquire.noCallThru().load('../lib/midi-js-utils.js', {
             'jBinary': mockJBinary,
             './midi-typeset.js': mockMidiTypeset,
             './midi-object.js': mockMidiObjectConstructor

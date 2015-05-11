@@ -1,5 +1,5 @@
 describe('midi-object', function() {
-	var MidiObject = require('../../../src/midi-object.js'),
+	var MidiObject = require('../../../lib/midi-object.js'),
 		mockBinary,
 		mockFile;
 
@@ -13,7 +13,7 @@ describe('midi-object', function() {
 				length: 6,
 				format: 0,
 				ntracks: 100
-			},
+			}
 		};
 		mockBinary.read.withArgs('File').returns(mockFile);
 	});
