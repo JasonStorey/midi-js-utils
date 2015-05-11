@@ -5,7 +5,8 @@
   "main": "./index.js",
   "scripts": {
     "test": "mocha",
-    "build": "./bin/build.sh",
+    "clean": "mkdir -p ./dist/ && rm -rf ./dist/*",
+    "build": "npm run clean && browserify ./index.js -o ./dist/midi-js-utils.js",
     "build-test-assets": "./bin/build-test-assets.sh",
     "phantom-test": "mocha-phantomjs http:localhost:8000/test/resources/test-runner.html"
   },
