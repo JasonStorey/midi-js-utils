@@ -7,6 +7,7 @@ describe('midi-object', function() {
 		mockBinary = {
 			read: sinon.stub()
 		};
+
 		mockFile = {
 			header: {
 				type: 'MThd',
@@ -15,6 +16,7 @@ describe('midi-object', function() {
 				ntracks: 100
 			}
 		};
+
 		mockBinary.read.withArgs('File').returns(mockFile);
 	});
 	

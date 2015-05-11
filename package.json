@@ -6,9 +6,9 @@
   "scripts": {
     "clean": "mkdir -p ./dist/ && rm -rf ./dist/*",
     "build": "npm run clean && browserify ./index.js -o ./dist/midi-js-utils.js",
-    "build-test-assets": "browserify ./test/acceptance/*-test.js -o ./dist/test-bundle.js",
+    "build-test-assets": "cp ./test/resources/* ./dist && browserify ./test/acceptance/*-test.js -o ./dist/test-bundle.js",
     "test": "mocha",
-    "test-browser": "npm run build && npm run build-test-assets && mocha-phantomjs http:localhost:8000/test/resources/test-runner.html"
+    "test-browser": "npm run build && npm run build-test-assets && mocha-phantomjs http:localhost:8000/dist/test-runner.html"
   },
   "author": "Jason A. Storey",
   "license": "ISC",
