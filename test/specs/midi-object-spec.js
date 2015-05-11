@@ -1,5 +1,5 @@
 describe('midi-object', function() {
-	var MidiObject = require('../../../lib/midi-object.js'),
+	var MidiObject = require('../../lib/midi-object.js'),
 		mockBinary,
 		mockFile;
 
